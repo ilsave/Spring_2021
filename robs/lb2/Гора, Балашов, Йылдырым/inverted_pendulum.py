@@ -14,15 +14,15 @@ ps = robot.getPositionSensor('pendulum sensor')
 ps.enable(timestep)
 
 # Get pointers to the motors and set target position to infinity (speed control).
-leftMotor = robot.getDevice("left wheel motor")
-rightMotor = robot.getDevice("right wheel motor")
+leftMotor = robot.getMotor("left wheel motor")
+rightMotor = robot.getMotor("right wheel motor")
 leftMotor.setPosition(float('+inf'))
 rightMotor.setPosition(float('+inf'))
 leftMotor.setVelocity(0.0)
 rightMotor.setVelocity(0.0)
 maxSpeed = min(rightMotor.getMaxVelocity(), leftMotor.getMaxVelocity())
 
-# Define the PID control constants and variables.
+# Define the PID control constants and variables. 
 KP = 100
 KI = 150
 KD = 200
@@ -43,7 +43,7 @@ while robot.step(timestep) != -1:
         leftMotor.setVelocity(0.0)
         rightMotor.setVelocity(0.0)
         break
-
+        
     # PID control.
     integral = integral + (position + previous_position) * 0.5 / timestep
     derivative = (position - previous_position) / timestep
