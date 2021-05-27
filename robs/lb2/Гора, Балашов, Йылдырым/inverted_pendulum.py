@@ -10,7 +10,7 @@ robot = Robot()
 timestep = int(robot.getBasicTimeStep())
 
 # Get pointers to the position sensor and enable it.
-ps = robot.getDevice('pendulum sensor')
+ps = robot.getPositionSensor('pendulum sensor')
 ps.enable(timestep)
 
 # Get pointers to the motors and set target position to infinity (speed control).
